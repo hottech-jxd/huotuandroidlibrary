@@ -1,0 +1,12 @@
+include ':app', ':libcommon'
+include ':libpush'
+include ':libedittext'
+//include ':libStyledDialogs'
+//include  ':libCoverFlow'
+include  ':libpay'
+
+//include ':libPullToRefreshEx', ':libWaveView',
+//include ':libSegmentControl'
+include ':libPullToRefresh'
+// , ':libToggleButton' ,':libMultiImageSelector'
+//include 'weiboSDK1.0',':weiboSDK', ':libcropper'
