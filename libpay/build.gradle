@@ -5,12 +5,12 @@ android {
     //Android6.0找不到org.apache.http.Header 的解决方法
     useLibrary 'org.apache.http.legacy'
 
-    compileSdkVersion 27
+    compileSdkVersion 28
     //buildToolsVersion "24.0.0"
 
     defaultConfig {
-        minSdkVersion 14
-        targetSdkVersion 27
+        minSdkVersion 16
+        targetSdkVersion 28
         versionCode VERSION_CODE.toInteger()
         versionName "${VERSION_NAME}"
     }
@@ -20,15 +20,22 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    libraryVariants.all{variant->
+        variant.outputs.all{
+            output->output.outputFileName = project.name+"-"+variant.name+"-"+VERSION_NAME+".aar"
+        }
+    }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(dir: 'libs', include: ['*.jar','*.aar'])
 
     implementation 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
 
     testImplementation 'junit:junit:4.12'
-    //compile 'com.android.support:appcompat-v7:24.0.0'
+
+    implementation (name:'alipaySdk-15.6.2-20190416165036', ext:'aar')
 
 }
 
